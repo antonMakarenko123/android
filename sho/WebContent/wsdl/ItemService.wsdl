@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://dao.shop" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://dao.shop" xmlns:intf="http://dao.shop" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://dao.shop" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getItems">
+    <complexType/>
+   </element>
+   <element name="getItemsResponse">
+    <complexType>
+     <sequence>
+      <element name="getItemsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buyItem">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buyItemResponse">
+    <complexType>
+     <sequence>
+      <element name="buyItemReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getItemsResponse">
+
+      <wsdl:part element="impl:getItemsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getItemsRequest">
+
+      <wsdl:part element="impl:getItems" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buyItemRequest">
+
+      <wsdl:part element="impl:buyItem" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="buyItemResponse">
+
+      <wsdl:part element="impl:buyItemResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ItemService">
+
+      <wsdl:operation name="getItems">
+
+         <wsdl:input message="impl:getItemsRequest" name="getItemsRequest"/>
+
+         <wsdl:output message="impl:getItemsResponse" name="getItemsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buyItem">
+
+         <wsdl:input message="impl:buyItemRequest" name="buyItemRequest"/>
+
+         <wsdl:output message="impl:buyItemResponse" name="buyItemResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ItemServiceSoapBinding" type="impl:ItemService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buyItem">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buyItemRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buyItemResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ItemServiceService">
+
+      <wsdl:port binding="impl:ItemServiceSoapBinding" name="ItemService">
+
+         <wsdlsoap:address location="http://localhost:8080/sho/services/ItemService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

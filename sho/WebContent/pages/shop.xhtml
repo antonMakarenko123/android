@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Shop</title>
+<h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+	<h:form id="products">
+		<h:dataTable id="table" value="#{itemController.items}" var="item"
+			>
+			<h:column>
+
+				<f:facet name="header">
+					<h:outputText value="name" />
+				</f:facet>
+				<h:outputText value="#{item.name}"></h:outputText>
+
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="description" />
+				</f:facet>
+				<h:outputText value="#{item.description}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="price" />
+				</f:facet>
+				<h:outputText value="#{item.price}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="number" />
+				</f:facet>
+				<h:outputText value="#{item.number}"></h:outputText>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+	<h:form id="add">
+		<h:panelGroup>
+            name: 
+            <h:inputText value="#{itemController.name}"
+				>
+				
+			</h:inputText>
+		</h:panelGroup>
+		<h:panelGroup>
+            description
+            <h:inputText value="#{itemController.description}" />
+		</h:panelGroup>
+		<h:panelGroup>
+          price
+           <h:inputText value="#{itemController.price}"/>
+			
+		</h:panelGroup>
+		<h:panelGroup>
+            count
+            <h:inputText value="#{itemController.number}" />
+		</h:panelGroup>
+
+		<h:commandButton action="#{itemController.addProduct}" value="add" styleClass="button" />
+		<h:messages id="addmessage" />
+	</h:form>
+	
+	<h:outputLink value="update.jsf" >update,delete</h:outputLink>
+</h:body>
+
+</html>

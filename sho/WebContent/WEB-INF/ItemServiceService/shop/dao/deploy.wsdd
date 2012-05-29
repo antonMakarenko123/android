@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ItemServiceService WSDL service -->
+
+  <service name="ItemService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://dao.shop"/>
+      <parameter name="wsdlServiceElement" value="ItemServiceService"/>
+      <parameter name="schemaQualified" value="http://dao.shop"/>
+      <parameter name="wsdlServicePort" value="ItemService"/>
+      <parameter name="className" value="shop.dao.ItemService"/>
+      <parameter name="wsdlPortType" value="ItemService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://dao.shop" xmlns:retNS="http://dao.shop" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getItems" qname="operNS:getItems" returnQName="retNS:getItemsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://dao.shop" xmlns:retNS="http://dao.shop" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buyItem" qname="operNS:buyItem" returnQName="retNS:buyItemReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://dao.shop" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getItems buyItem"/>
+
+  </service>
+</deployment>
